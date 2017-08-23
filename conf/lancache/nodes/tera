@@ -16,7 +16,7 @@ location / {
 	# Use tera Cache
 	proxy_cache tera;
 	
-	#Necessary Includes
+	# Necessary Includes
 	include lancache/proxy-cache;
 	include lancache/cache-range;
 }
