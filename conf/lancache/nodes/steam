@@ -11,6 +11,7 @@ location /depot/ {
 	# cache based on just the URI excluding the query string
 	proxy_cache_key "$server_name$uri";
 	include lancache/cache-installs;
+	# Use Steam Cache
 	proxy_cache steam;
 }
 
@@ -26,6 +27,7 @@ location /serverlist/ {
 location / {
 	include lancache/cache-key-default;
 	include lancache/cache-other;
+	# Use Other Cache
 	proxy_cache other;
-    include lancache/proxy-cache;
+	include lancache/proxy-cache;
 } 
