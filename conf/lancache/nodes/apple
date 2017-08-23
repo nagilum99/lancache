@@ -1,16 +1,17 @@
-    # Apple Node
-    include lancache/resolver;
-    location / {
-       range_cache_size 1392640;
-       proxy_bind lc-host-proxybind;
-       proxy_ignore_headers Expires Cache-Control;
-       proxy_hide_header ETag;
-       proxy_cache_valid 206 90d;
-       proxy_cache_key "$server_name$request_uri $range_cache_range";
-       proxy_set_header Range $range_cache_range;
-       proxy_read_timeout 150;
-       # Use OSX cache
-       proxy_cache apple;
-       include lancache/proxy-cache;
-#       include lancache/cache-slice;
-    }
+# Apple Node
+include lancache/resolver;
+include lancache/cache-key-default;
+location / {
+	range_cache_size 16777216;
+	proxy_bind lc-host-proxybind;
+	proxy_hide_header Etag;
+	proxy_read_timeout 150;
+	proxy_cache_valid 206 90d;
+	
+	# Use Apple Cache
+	proxy_cache apple;
+	
+	#Necessary Includes
+	include lancache/proxy-cache;
+	include lancache/cache-range;
+}
