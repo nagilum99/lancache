@@ -11,7 +11,7 @@ location / {
 	# Use Hirez Cache
 	proxy_cache hirez;
 	
-	#Necessary Includes
+	# Necessary Includes
 	include lancache/proxy-cache;
 	include lancache/cache-range;
 }
