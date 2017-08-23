@@ -1,21 +1,22 @@
 # Tera Node
 include lancache/resolver;
+include lancache/cache-key-default;
 location / {
-  set $no_cache "";
-  if ($request_uri ~* \.patchmanifest$) {
-    set $no_cache "1";
-  }
+	set $no_cache "";
+	if ($request_uri ~* \.patchmanifest$) {
+    		set $no_cache "1";
+  	}
   
 	range_cache_size 16777216;
-	proxy_set_header Range $range_cache_range;
-	proxy_cache_key "$server_name$request_uri $range_cache_range";
-	proxy_hide_header Etag;
 	proxy_bind lc-host-proxybind;
+	proxy_hide_header Etag;
 	proxy_read_timeout 150;
-	proxy_ignore_headers Expires Cache-Control;
-	proxy_cache_valid 200 206 120d;
-	# Use Tera cache
-	proxy_cache tera;
+	proxy_cache_valid 206 90d;
+	
+	# Use Origin Cache
+	proxy_cache origin;
+	
+	#Necessary Includes
 	include lancache/proxy-cache;
-#	include lancache/cache-slice;
+	include lancache/cache-range;
 }
