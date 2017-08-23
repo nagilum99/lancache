@@ -11,7 +11,7 @@ location / {
 	# Use Riot Cache
 	proxy_cache riot;
 	
-	#Necessary Includes
+	# Necessary Includes
 	include lancache/proxy-cache;
 	include lancache/cache-range;
 }
