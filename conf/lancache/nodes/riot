@@ -6,9 +6,9 @@ location / {
 	range_cache_size 16777216;
 	proxy_set_header Range $range_cache_range;
 	proxy_hide_header Etag;
-  proxy_bind lc-host-proxybind;
-  proxy_cache riot;
-  proxy_read_timeout 150;
-  include lancache/proxy-cache;
-  include lancache/cache-range;
+	proxy_bind lc-host-proxybind;
+	proxy_cache riot;
+	proxy_read_timeout 150;
+	include lancache/proxy-cache;
+	include lancache/cache-range;
 }
