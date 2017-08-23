@@ -1,5 +1,6 @@
 # Debug Node
 include lancache/resolver;
+include lancache/cache-key-default;
 log_subrequest on;
 
 location / {
