@@ -6,11 +6,14 @@ location / {
     set $no_cache "1";
   }
   
-  proxy_no_cache $no_cache;
-  proxy_cache_bypass $no_cache;
-  proxy_bind lc-host-proxybind;
-  proxy_cache tera;
+	range_cache_size 16777216;
+	proxy_set_header Range $range_cache_range;
+	proxy_cache_key "$server_name$request_uri $range_cache_range";
+	proxy_hide_header Etag;
+	proxy_bind lc-host-proxybind;
+	proxy_read_timeout 150;
   proxy_ignore_headers Expires Cache-Control;
+  proxy_cache tera;
   proxy_cache_valid 200 206 120d;
   include lancache/proxy-cache;
   include lancache/cache-slice;
