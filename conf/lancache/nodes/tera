@@ -13,8 +13,8 @@ location / {
 	proxy_read_timeout 150;
 	proxy_cache_valid 206 90d;
 	
-	# Use Origin Cache
-	proxy_cache origin;
+	# Use tera Cache
+	proxy_cache tera;
 	
 	#Necessary Includes
 	include lancache/proxy-cache;
