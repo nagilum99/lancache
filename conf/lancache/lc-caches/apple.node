@@ -1,1 +1,13 @@
-
+    # Apple Node
+    include lancache/resolver;
+    location / {
+       proxy_bind lc-host-proxybind;
+       proxy_ignore_headers Expires Cache-Control;
+       proxy_hide_header ETag;
+       proxy_cache_valid 206 90d;
+       proxy_read_timeout 150;
+       # Use OSX cache
+       proxy_cache apple;
+       include lancache/proxy-cache;
+       include lancache/cache-slice;
+    }
