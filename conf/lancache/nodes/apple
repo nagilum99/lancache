@@ -8,6 +8,7 @@
        proxy_read_timeout 150;
        # Use OSX cache
        proxy_cache apple;
+       range_cache_size 1392640;
        include lancache/proxy-cache;
        include lancache/cache-slice;
     }
