@@ -3,9 +3,14 @@ include lancache/resolver;
 include lancache/cache-key-default;
 
 location / {
-  proxy_bind lc-host-proxybind;
+	range_cache_size 16777216;
+	proxy_set_header Range $range_cache_range;
+	proxy_cache_key "$server_name$request_uri $range_cache_range";
+	proxy_hide_header Etag;
+	proxy_bind lc-host-proxybind;
+	proxy_read_timeout 150;
+	proxy_cache_valid 206 90d;
   proxy_cache sony;
-  proxy_read_timeout 150;
   include lancache/proxy-cache;
   include lancache/cache-range;
 }
