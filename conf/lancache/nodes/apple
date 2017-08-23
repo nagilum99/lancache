@@ -12,5 +12,5 @@
        # Use OSX cache
        proxy_cache apple;
        include lancache/proxy-cache;
-       include lancache/cache-slice;
+#       include lancache/cache-slice;
     }
