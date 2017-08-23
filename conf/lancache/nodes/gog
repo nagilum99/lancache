@@ -9,7 +9,7 @@ location / {
 	proxy_cache_valid 206 90d;
 	
 	# Use GOG Cache
-	proxy_cache hirez;
+	proxy_cache gog;
 	
 	#Necessary Includes
 	include lancache/proxy-cache;
