@@ -10,8 +10,8 @@ location / {
 	proxy_bind lc-host-proxybind;
 	proxy_read_timeout 150;
 	proxy_cache_valid 206 120d;
-proxy_ignore_headers Expires Cache-Control;
-proxy_cache wargaming;
-include lancache/proxy-cache;
-include lancache/cache-range;
+	proxy_ignore_headers Expires Cache-Control;
+	proxy_cache wargaming;
+	include lancache/proxy-cache;
+	include lancache/cache-range;
 }
