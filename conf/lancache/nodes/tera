@@ -17,5 +17,5 @@ location / {
 	# Use Tera cache
 	proxy_cache tera;
 	include lancache/proxy-cache;
-	include lancache/cache-slice;
+#	include lancache/cache-slice;
 }
