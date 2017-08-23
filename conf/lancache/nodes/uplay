@@ -11,7 +11,7 @@ location / {
 	# Use uPlay Cache
 	proxy_cache uplay;
 	
-	#Necessary Includes
+	# Necessary Includes
 	include lancache/proxy-cache;
 	include lancache/cache-range;
 }
