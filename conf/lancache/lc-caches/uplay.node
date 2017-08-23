@@ -1,1 +1,11 @@
-
+# uPlay Node
+include lancache/resolver;
+include lancache/cache-key-default;
+    
+location / {
+  proxy_bind lc-host-proxybind;
+  proxy_cache uplay;
+  proxy_read_timeout 150;
+  include lancache/proxy-cache;
+  include lancache/cache-range;
+}
