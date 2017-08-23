@@ -11,7 +11,7 @@ location / {
 	# Use GOG Cache
 	proxy_cache gog;
 	
-	#Necessary Includes
+	# Necessary Includes
 	include lancache/proxy-cache;
 	include lancache/cache-range;
 }
