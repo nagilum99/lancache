@@ -11,7 +11,7 @@ location / {
 	# Use Sony Cache
 	proxy_cache sony;
 	
-	#Necessary Includes
+	# Necessary Includes
 	include lancache/proxy-cache;
 	include lancache/cache-range;
 }
