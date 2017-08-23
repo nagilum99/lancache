@@ -16,6 +16,7 @@ location / {
 	proxy_ignore_headers Expires Cache-Control;
 	proxy_cache_valid 200 120d;
 	proxy_read_timeout 150;
+	proxy_cache_key "$server_name$request_uri $range_cache_range";
 	proxy_cache arenanetworks;
 	include lancache/proxy-cache;
 	include lancache/cache-range;
