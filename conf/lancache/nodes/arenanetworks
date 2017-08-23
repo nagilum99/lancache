@@ -6,10 +6,12 @@ location / {
     if ($request_uri ~* "(latest64/101)") {
       set $no_cache 1;
     }
+    range_cache_size 16777216;
     proxy_no_cache $no_cache;
     proxy_cache_bypass $no_cache;
     proxy_bind lc-host-proxybind;
     proxy_ignore_headers Expires Cache-Control;
+    proxy_set_header Range $range_cache_range;
     proxy_cache_valid 200 120d;
     proxy_read_timeout 150;
     proxy_cache arenanetworks;
