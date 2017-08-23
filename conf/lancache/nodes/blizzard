@@ -11,7 +11,7 @@ location / {
 	# Use Blizzard Cache
 	proxy_cache blizzard;
 			
-	#Necessary Includes
+	# Necessary Includes
 	include lancache/proxy-cache;
 	include lancache/cache-range;
 }
