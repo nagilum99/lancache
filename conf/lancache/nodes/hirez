@@ -4,13 +4,14 @@ include lancache/cache-key-default;
 location / {
 	# Some downloads are very large so we cache based on range to keep single downloads quick and hence ensure interactivity is good.
 	range_cache_size 16777216;
-	proxy_bind lc-host-proxybind;
 	proxy_set_header Range $range_cache_range;
-	proxy_hide_header Etag;
 	proxy_cache_key "$server_name$request_uri $range_cache_range";
-	proxy_cache_valid 206 90d;
-	proxy_cache hirez;
+	proxy_hide_header Etag;
+	proxy_bind lc-host-proxybind;
 	proxy_read_timeout 150;
+	proxy_cache_valid 206 90d;
+	# Use Hirez Cache
+	proxy_cache hirez;
 	include lancache/proxy-cache;
 	include lancache/cache-range;
 }
