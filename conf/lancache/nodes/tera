@@ -8,7 +8,6 @@ location / {
   	}
   
 	range_cache_size 16777216;
-	proxy_bind lc-host-proxybind;
 	proxy_hide_header Etag;
 	proxy_read_timeout 150;
 	proxy_cache_valid 206 90d;
