@@ -18,16 +18,23 @@ proxy_cache_valid 206 90d;
 range_cache_size 1392640;
 
 location / {
-	# proxy_set_header directives aren't merged so must be here
-	proxy_set_header Range $range_cache_range;
-	include lancache/cache-installs;
+        # proxy_set_header directives aren't merged so must be here
+        proxy_set_header Range $range_cache_range;
+        include lancache/cache-installs;
 }
 
 # Process a redirect and cache the response
 location @redirect {
-	# proxy_set_header directives aren't merged so must be here
-	proxy_set_header Range $range_cache_range;
-	include lancache/cache-installs-base;
-	# We need to copy the variable as it's not available after the pass starts
-	set $location $upstream_http_location;
-	proxy_pass $location;
+        # proxy_set_header directives aren't merged so must be here
+        proxy_set_header Range $range_cache_range;
+
+        # Use Microsoft Cache
+        proxy_cache microsoft;
+
+        # Necessary Includes
+        include lancache/proxy-cache;
+        include lancache/cache-range;
+
+        # We need to copy the variable as it's not available after the pass starts
+        set $location $upstream_http_location;
+}
