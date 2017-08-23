@@ -11,7 +11,7 @@ location / {
 	# Use Wargaming Cache
 	proxy_cache wargaming;
 	
-	#Necessary Includes
+	# Necessary Includes
 	include lancache/proxy-cache;
 	include lancache/cache-range;
 }
